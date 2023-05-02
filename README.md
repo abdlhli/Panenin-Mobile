@@ -14,18 +14,15 @@ Sementara pada aplikasi mobile, para pembeli dapat melakukan pembelian produk la
 Dengan adanya platform eCommerce Panenin, diharapkan dapat membantu para mahasiswa Politeknik Negeri Jember dalam memasarkan produk-produk pertanian mereka dengan lebih mudah dan efektif, serta memberikan kemudahan bagi para pembeli dalam memperoleh produk pertanian yang segar dan berkualitas.
 
 
-## Fitur Pada Website
+## Fitur Pada Mobile
 
-Landing Page
-- Products
-- News
-- Contact
-
-Admin
 - Home
-- Daftar Akun
-- Daftar Pemesanan
-- Laporan Penjualan
+- Login
+- Register
+- Transaksi
+- Keranjang
+- Profile User
+- Product List
 
 
 ## Developers
