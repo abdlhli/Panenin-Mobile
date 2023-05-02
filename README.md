@@ -32,4 +32,6 @@ Admin
 
 - [@Abdullah Ali](https://github.com/abdlhli)
 - [@Firmansyah Fikriawan](https://github.com/fmnsh19)
-- [@Zulfianti](https://github.com/viviashilah14)
+- [@Zulfianti Rahmawati](https://github.com/viviashilah14)
+- [@Alvin Jentara Adi](https://github.com/Alvinjentara)
+- [@Tegar Eko Prasetyo](https://github.com/tegarCoding)
