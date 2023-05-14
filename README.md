@@ -1,7 +1,7 @@
 
 ![image.png](https://github.com/abdlhli/Panenin/blob/master/public/assets/images/Panenin..png)
 
-# Website Panenin.
+# Mobile Panenin.
 
 Panenin adalah sebuah platform eCommerce yang didedikasikan untuk menjual hasil panen pertanian Jember. Dalam platform ini, Tim panenin akan menjual produk-produk pertanian yang dihasilkan oleh petani jember langsung dari kebun atau lahan pertanian yang ada di jember.
 
