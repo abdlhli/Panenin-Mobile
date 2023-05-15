@@ -103,26 +103,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageSlider" />
 
+
     <LinearLayout
+        android:id="@+id/relativelayout"
         android:layout_width="match_parent"
-        android:layout_height="115dp"
-        android:layout_marginTop="4dp"
-        android:orientation="horizontal"
+        android:layout_height="136dp"
+        android:layout_marginTop="36dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerkategori"
-            android:layout_width="match_parent"
-            android:layout_height="106dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3"
-            tools:listitem="@layout/kategoricard" />
-
+            android:id="@+id/horizontalRv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scrollbars="horizontal"
+            tools:listitem="@layout/kategoricard"
+            />
     </LinearLayout>
 
 

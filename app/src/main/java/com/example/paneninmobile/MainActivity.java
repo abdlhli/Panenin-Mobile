@@ -16,13 +16,14 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageSlider imageSlider;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
 
         imageSlider = findViewById(R.id.imageSlider);
-        RecyclerView recyclerView = findViewById(R.id.recyclerkategori);
+
 
         //list for images
 
@@ -35,11 +36,6 @@ public class MainActivity extends AppCompatActivity {
         imageSlider.setImageList(slideModels, ScaleTypes.FIT);
 
         //recycle card
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false);
-        recyclerView.setLayoutManager(layoutManager);
-
-
 
     }
 }
