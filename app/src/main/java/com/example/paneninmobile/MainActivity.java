@@ -15,7 +15,7 @@ import com.denzcoskun.imageslider.models.SlideModel;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity<ImageSlider> extends AppCompatActivity {
     Button btn_login, btn_register;
 
     private ImageSlider imageSlider;
@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
 
         imageSlider = findViewById(R.id.imageSlider);
@@ -40,9 +41,8 @@ public class MainActivity extends AppCompatActivity {
 
         //recycle card
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
-
 
 
     }
