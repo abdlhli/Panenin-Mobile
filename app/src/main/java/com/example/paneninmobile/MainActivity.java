@@ -20,6 +20,7 @@ public class MainActivity<ImageSlider> extends AppCompatActivity {
 
     private ImageSlider imageSlider;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -27,7 +28,7 @@ public class MainActivity<ImageSlider> extends AppCompatActivity {
         setContentView(R.layout.home);
 
         imageSlider = findViewById(R.id.imageSlider);
-        RecyclerView recyclerView = findViewById(R.id.recyclerkategori);
+
 
         //list for images
 
@@ -43,6 +44,7 @@ public class MainActivity<ImageSlider> extends AppCompatActivity {
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
+
 
 
     }
