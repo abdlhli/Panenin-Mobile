@@ -19,6 +19,10 @@ public class MainActivity<ImageSlider> extends AppCompatActivity {
     Button btn_login, btn_register;
 
     private ImageSlider imageSlider;
+     private  RecyclerView recyclerView;
+
+     private ArrayList<String> dataSource = new ArrayList<>();
+
 
 
     @Override
@@ -28,7 +32,15 @@ public class MainActivity<ImageSlider> extends AppCompatActivity {
         setContentView(R.layout.home);
 
         imageSlider = findViewById(R.id.imageSlider);
+        recyclerView = findViewById(R.id.horizontalRv);
 
+        dataSource.add("Hello");
+        dataSource.add("World");
+        dataSource.add("To");
+        dataSource.add("The");
+        dataSource.add("Code");
+        dataSource.add("City");
+        dataSource.add("******");
 
         //list for images
 
@@ -41,6 +53,10 @@ public class MainActivity<ImageSlider> extends AppCompatActivity {
         imageSlider.setImageList(slideModels, ScaleTypes.FIT);
 
         //recycle card
+        KategoriAdapter kategoriAdapter = new KategoriAdapter(dataSource);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this , LinearLayoutManager.HORIZONTAL , false);
+        recyclerView.setAdapter(kategoriAdapter);
+        recyclerView.setLayoutManager(linearLayoutManager);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
