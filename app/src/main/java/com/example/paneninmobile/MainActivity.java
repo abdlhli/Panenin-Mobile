@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
@@ -12,13 +15,15 @@ import com.denzcoskun.imageslider.models.SlideModel;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity<ImageSlider> extends AppCompatActivity {
+    Button btn_login, btn_register;
 
     private ImageSlider imageSlider;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
 
@@ -36,6 +41,11 @@ public class MainActivity extends AppCompatActivity {
         imageSlider.setImageList(slideModels, ScaleTypes.FIT);
 
         //recycle card
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(layoutManager);
+
+
 
     }
 }
