@@ -15,8 +15,7 @@ import com.denzcoskun.imageslider.models.SlideModel;
 
 import java.util.ArrayList;
 
-public class MainActivity<ImageSlider> extends AppCompatActivity {
-    Button btn_login, btn_register;
+public class MainActivity extends AppCompatActivity {
 
     private ImageSlider imageSlider;
      private  RecyclerView recyclerView;
