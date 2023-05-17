@@ -11,6 +11,7 @@ import android.widget.TextView;
 public class LoginActivity extends AppCompatActivity {
     ImageView btn_back;
     TextView btn_toregist;
+    TextView btn_login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,14 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+            }
+        });
+
+        btn_login = findViewById(R.id.btn_login2);
+        btn_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, MainActivity.class));
             }
         });
 
