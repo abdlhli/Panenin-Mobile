@@ -15,16 +15,16 @@
         android:theme="@style/Theme.PaneninMobile"
         tools:targetApi="31">
         <activity
-            android:name=".OnBoarding"
+            android:name=".Auth.OnBoarding"
             android:exported="false" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".Auth.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".Auth.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Home.MainActivity"
             android:exported="false" />
         <activity
             android:name=".SplashScreen"

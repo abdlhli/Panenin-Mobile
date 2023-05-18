@@ -1,4 +1,4 @@
-package com.example.paneninmobile;
+package com.example.paneninmobile.Auth;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.paneninmobile.Home.MainActivity;
+import com.example.paneninmobile.R;
 
 public class LoginActivity extends AppCompatActivity {
     ImageView btn_back;

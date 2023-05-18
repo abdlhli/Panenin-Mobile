@@ -1,26 +1,28 @@
-package com.example.paneninmobile;
+package com.example.paneninmobile.Home;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.example.paneninmobile.R;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     private ImageSlider imageSlider;
-     private  RecyclerView recyclerView;
+     private  RecyclerView recyclerView, recyclerViewTerlaris;
 
-     private ArrayList<String> dataSource = new ArrayList<>();
+    private ArrayList<String> dataSource = new ArrayList<>();
+
+    private ArrayList<ItemTerlaris> dataSourceTerlaris = new ArrayList<>();
+    ArrayList<ItemTerlaris> dataTerlaris = new ArrayList<>();
+
 
 
 
@@ -32,7 +34,19 @@ public class MainActivity extends AppCompatActivity {
 
         imageSlider = findViewById(R.id.imageSlider);
         recyclerView = findViewById(R.id.horizontalRv);
+        recyclerViewTerlaris = findViewById(R.id.horizontalRv2);
 
+        dataTerlaris.add(new ItemTerlaris("Judul 1", "Harga 1"));
+        dataTerlaris.add(new ItemTerlaris("Judul 2", "Harga 2"));
+        dataTerlaris.add(new ItemTerlaris("Judul 3", "Harga 3"));
+        dataTerlaris.add(new ItemTerlaris("Judul 4", "Harga 4"));
+        dataTerlaris.add(new ItemTerlaris("Judul 5", "Harga 5"));
+        dataTerlaris.add(new ItemTerlaris("Judul 6", "Harga 6"));
+
+        dataSourceTerlaris.addAll(dataTerlaris);
+
+
+        //data source kategori
         dataSource.add("Hello");
         dataSource.add("World");
         dataSource.add("To");
@@ -51,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
         imageSlider.setImageList(slideModels, ScaleTypes.FIT);
 
-        //recycle card
+        //Kategori Adapter card
         KategoriAdapter kategoriAdapter = new KategoriAdapter(dataSource);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this , LinearLayoutManager.HORIZONTAL , false);
         recyclerView.setAdapter(kategoriAdapter);
@@ -59,6 +73,16 @@ public class MainActivity extends AppCompatActivity {
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
+
+        //Terlaris Adapter
+        TerlarisAdapter terlarisAdapter = new TerlarisAdapter(dataSourceTerlaris);
+        LinearLayoutManager linearLayoutManagerTerlaris = new LinearLayoutManager(this , LinearLayoutManager.HORIZONTAL , false);
+        recyclerViewTerlaris.setAdapter(terlarisAdapter);
+        recyclerViewTerlaris.setLayoutManager(linearLayoutManagerTerlaris);
+
+        LinearLayoutManager layoutManagerTerlaris = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        recyclerViewTerlaris.setLayoutManager(layoutManagerTerlaris);
+
 
 
 
