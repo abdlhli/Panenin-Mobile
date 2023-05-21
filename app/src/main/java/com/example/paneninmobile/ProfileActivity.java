@@ -1,9 +1,5 @@
 package com.example.paneninmobile;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,11 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.paneninmobile.fragments.BelumBayarFragment;
-import com.example.paneninmobile.fragments.DiKemasFragment;
-import com.example.paneninmobile.fragments.PengembalianFragment;
+import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity {
     Button btn_edit;
     TextView btn_pesanan;
     Button btn_pesanan2;
@@ -41,35 +35,35 @@ public class MainActivity extends AppCompatActivity {
         btn_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, ubahProfile.class));
+                startActivity(new Intent(ProfileActivity.this, UpdateProfileActivity.class));
             }
         });
 
         btn_pesanan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Detailriwayat.class);
+                Intent intent = new Intent(getApplicationContext(), DetailRiwayatActivity.class);
                 startActivity(intent);
             }
         });
         btn_pesanan2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Detailriwayat.class);
+                Intent intent = new Intent(getApplicationContext(), DetailRiwayatActivity.class);
                 startActivity(intent);
             }
         });
         btn_belum_bayar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Detailriwayat.class);
+                Intent intent = new Intent(getApplicationContext(), DetailRiwayatActivity.class);
                 startActivity(intent);
             }
         });
         btn_dikemas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Detailriwayat.class);
+                Intent intent = new Intent(getApplicationContext(), DetailRiwayatActivity.class);
 
                 startActivity(intent);
             }

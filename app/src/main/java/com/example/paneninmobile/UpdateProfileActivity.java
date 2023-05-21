@@ -1,16 +1,15 @@
 package com.example.paneninmobile;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 
-public class ubahProfile extends AppCompatActivity {
+public class UpdateProfileActivity extends AppCompatActivity {
     Button btn_bekbek;
 
     @SuppressLint("MissingInflatedId")
@@ -24,7 +23,7 @@ public class ubahProfile extends AppCompatActivity {
         btn_bekbek.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
             }
         });
     }

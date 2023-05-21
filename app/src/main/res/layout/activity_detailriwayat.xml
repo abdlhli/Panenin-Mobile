@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Detailriwayat">
+    tools:context=".DetailRiwayatActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -43,7 +43,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Detailriwayat">
+        tools:context=".DetailRiwayatActivity">
 
 
             <com.google.android.material.tabs.TabLayout
