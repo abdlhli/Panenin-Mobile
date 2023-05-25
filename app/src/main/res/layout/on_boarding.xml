@@ -20,9 +20,9 @@
 
     <ImageView
         android:id="@+id/view"
-        android:layout_width="416dp"
-        android:layout_height="360dp"
-        android:layout_marginTop="436dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="520dp"
         android:background="@drawable/bg_green"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.6"
