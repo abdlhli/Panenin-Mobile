@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.paneninmobile.Home.MainActivity;
+import com.example.paneninmobile.Home.BerandaActivity;
 import com.example.paneninmobile.R;
 
 public class LoginActivity extends AppCompatActivity {
@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                startActivity(new Intent(LoginActivity.this, BerandaActivity.class));
             }
         });
 

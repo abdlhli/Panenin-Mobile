@@ -13,7 +13,7 @@ import com.example.paneninmobile.R;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class BerandaActivity extends AppCompatActivity {
 
     private ImageSlider imageSlider;
      private  RecyclerView recyclerView, recyclerViewTerlaris;
@@ -84,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewTerlaris.setLayoutManager(layoutManagerTerlaris);
 
 
+        //produk list
 
 
     }
