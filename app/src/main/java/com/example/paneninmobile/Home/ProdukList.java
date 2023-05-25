@@ -48,6 +48,13 @@ public class ProdukList extends AppCompatActivity {
         recyclerViewProdukList.setLayoutManager(layoutManager);
         recyclerViewProdukList.setAdapter(produkListAdapter);
 
+        produkListAdapter.setDialog(new ProdukListAdapter.Dialog() {
+            @Override
+            public void onClick(ProdukListGet produkListGet) {
+                Toast.makeText(getApplicationContext(), "Kamu klik menu : " +produkListGet.getTitle(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
 
 

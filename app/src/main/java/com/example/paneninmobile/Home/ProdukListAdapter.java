@@ -29,6 +29,7 @@ public class ProdukListAdapter extends RecyclerView.Adapter<ProdukListAdapter.My
     public ProdukListAdapter(ArrayList<ProdukListGet> dataproduk) {
 
         this.dataproduk = dataproduk;
+
     }
 
     @NonNull
@@ -42,7 +43,7 @@ public class ProdukListAdapter extends RecyclerView.Adapter<ProdukListAdapter.My
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
         holder.tvTitle3.setText(dataproduk.get(position).getTitle());
         holder.textproduklist.setText(dataproduk.get(position).getHarga());
-        holder.gambar.setImageDrawable(dataproduk.get(position).getGambar());
+//        holder.gambar.setImageDrawable(dataproduk.get(position).getGambar());
     }
 
     @Override
@@ -53,13 +54,13 @@ public class ProdukListAdapter extends RecyclerView.Adapter<ProdukListAdapter.My
 
     class MyHolder extends RecyclerView.ViewHolder {
         TextView tvTitle3, textproduklist;
-        ImageView gambar;
+//        ImageView gambar;
 
         public MyHolder(@NonNull View itemView) {
             super(itemView);
             tvTitle3 = itemView.findViewById(R.id.tvTitle3);
             textproduklist = itemView.findViewById(R.id.textproduklist);
-            gambar = itemView.findViewById(R.id.Produklist);
+//            gambar = itemView.findViewById(R.id.Produklist);
 
             itemView.setOnClickListener(v -> {
                 if (dialog!=null){

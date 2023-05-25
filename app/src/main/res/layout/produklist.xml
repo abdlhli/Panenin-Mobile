@@ -10,28 +10,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/imageView5"
-
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginTop="8dp"
-            android:layout_weight="1"
-            android:layout_marginStart="15dp"
-            app:layout_constraintEnd_toStartOf="@+id/searchView1"
-            app:layout_constraintHorizontal_bias="0.3"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/arrow_left" />
 
         <SearchView
             android:id="@+id/searchView1"
             android:layout_width="363dp"
             android:layout_height="43dp"
             android:layout_marginStart="17dp"
-            android:layout_marginEnd="7dp"
+            android:layout_marginEnd="17dp"
+            android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView5"
+
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
         </SearchView>
