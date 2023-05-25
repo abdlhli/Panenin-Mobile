@@ -1,6 +1,4 @@
-package com.example.paneninmobile;
-
-import android.widget.Switch;
+package com.example.paneninmobile.Profile;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

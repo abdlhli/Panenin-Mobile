@@ -1,14 +1,14 @@
 package com.example.paneninmobile.Auth;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.paneninmobile.Home.MainActivity;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.paneninmobile.MainActivity;
 import com.example.paneninmobile.R;
 
 public class LoginActivity extends AppCompatActivity {
@@ -41,9 +41,12 @@ public class LoginActivity extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
             }
         });
+
 
     }
 }

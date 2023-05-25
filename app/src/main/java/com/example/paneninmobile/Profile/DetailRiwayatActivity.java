@@ -1,4 +1,4 @@
-package com.example.paneninmobile;
+package com.example.paneninmobile.Profile;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -9,6 +9,8 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.example.paneninmobile.MainActivity;
+import com.example.paneninmobile.R;
 import com.google.android.material.tabs.TabLayout;
 
 
@@ -36,7 +38,7 @@ public class DetailRiwayatActivity extends AppCompatActivity {
         btn_bck_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(DetailRiwayatActivity.this, ProfileActivity.class));
+                startActivity(new Intent(DetailRiwayatActivity.this, MainActivity.class));
             }
         });
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {

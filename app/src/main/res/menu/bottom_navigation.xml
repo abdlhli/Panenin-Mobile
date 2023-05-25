@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/HomeButton"
+        android:icon="@drawable/home"
+        android:title="Beranda" />
+
+    <item
+        android:id="@+id/KeranjangButton"
+        android:icon="@drawable/cart"
+        android:title="Keranjang" />
+
+    <item
+        android:id="@+id/WhatsappButton"
+        android:icon="@drawable/whatsapp_circle__1_"
+        android:title="Whatsapp" />
+
+    <item
+        android:id="@+id/ProfileButton"
+        android:icon="@drawable/user"
+        android:title="Profile" />
+
+</menu>

@@ -1,47 +1,71 @@
 package com.example.paneninmobile;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import android.view.MenuItem;
 
-import com.denzcoskun.imageslider.ImageSlider;
-import com.denzcoskun.imageslider.constants.ScaleTypes;
-import com.denzcoskun.imageslider.models.SlideModel;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
-import java.util.ArrayList;
+import com.example.paneninmobile.Home.BerandaFragment;
+import com.example.paneninmobile.Profile.ProfileFragment;
+import com.example.paneninmobile.fragments.SelesaiFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity<ImageSlider> extends AppCompatActivity {
-    private ImageSlider imageSlider;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
+public class MainActivity extends AppCompatActivity {
+
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home);
+        setContentView(R.layout.bottombar);
 
-        imageSlider = findViewById(R.id.imageSlider);
-        RecyclerView recyclerView = findViewById(R.id.recyclerkategori);
+        bottomNavigationView = findViewById(R.id.nav);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Fragment selectedFragment = null;
 
-        //list for images
+                switch (item.getItemId()) {
+                    case R.id.HomeButton:
+                        selectedFragment = new BerandaFragment();
+                        break;
+                    case R.id.KeranjangButton:
+                        selectedFragment = new SelesaiFragment();
+                        break;
+                    case R.id.WhatsappButton:
+                        openWhatsapp();
+                        break;
+                    case R.id.ProfileButton:
+                        selectedFragment = new ProfileFragment();
+                        break;
+                }
 
-        ArrayList<SlideModel> slideModels = new ArrayList<>();
+                getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, selectedFragment).commit();
+                return true;
+            }
+        });
 
-        slideModels.add(new SlideModel("https://akcdn.detik.net.id/visual/2020/02/19/f8950d9c-3861-4f03-8b21-04c96b6744e3_169.jpeg?w=650", ScaleTypes.FIT));
-        slideModels.add(new SlideModel("https://i.ytimg.com/vi/Ie3B7Ms9klM/hqdefault.jpg", ScaleTypes.FIT));
-        slideModels.add(new SlideModel("https://dafunda.com/wp-content/uploads/2021/09/fakta-unik-saitama-one-punch-man.jpg", ScaleTypes.FIT));
+        // Set default fragment
+        bottomNavigationView.setSelectedItemId(R.id.HomeButton);
+    }
 
-        imageSlider.setImageList(slideModels, ScaleTypes.FIT);
+    private void openWhatsapp(){
+        String phoneNumber = "+6281233326540";
+        String message = "Halo, Permisi admin saya ingin menanyakan ";
 
-        //recycle card
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        recyclerView.setLayoutManager(layoutManager);
-
-
+        try {
+            Uri uri = Uri.parse("https://api.whatsapp.com/send?phone=" + phoneNumber + "&text=" + URLEncoder.encode(message, "UTF-8"));
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(intent);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
     }
 }

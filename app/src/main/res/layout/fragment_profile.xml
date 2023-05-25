@@ -6,29 +6,29 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".Profile.ProfileActivity">
+    tools:context=".Profile.ProfileFragment">
 
-        <LinearLayout
-            android:layout_marginRight="20dp"
-            android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_marginRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="20dp">
+        <Button
+            android:background="@drawable/kiri"
+            android:layout_width="30dp"
+            android:layout_height="30dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingTop="20dp">
-            <Button
-                android:background="@drawable/kiri"
-                android:layout_width="30dp"
-                android:layout_height="30dp"/>
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:text="Profile Saya"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:text="Profile Saya"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_marginTop="20dp"
@@ -268,41 +268,14 @@
                 android:textSize="20dp"
                 android:textStyle="bold"/>
         </LinearLayout>
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="1dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="80dp"
-                android:background="@color/black"/>
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="80dp"
+            android:background="@color/black"/>
 
-        </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/nav"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                app:itemBackground="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0"
-                app:menu="@menu/bottom_navigation" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
-
-
 
 </LinearLayout>
 
