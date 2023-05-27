@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,13 +42,7 @@ public class BerandaFragment extends Fragment {
     private ArrayList<ItemTerlaris> dataSourceTerlaris = new ArrayList<>();
     ArrayList<ItemTerlaris> dataTerlaris = new ArrayList<>();
 
-    private KategoriAdapter kategoriAdapter;
-    private LinearLayoutManager layoutManager;
-
     ProgressDialog progressDoalog;
-    private KategoriAdapter adapter;
-
-    private Button btn_produkList;
 
     public BerandaFragment() {
         // Required empty public constructor
@@ -68,19 +61,10 @@ public class BerandaFragment extends Fragment {
 
         dataSourceTerlaris.addAll(dataTerlaris);
 
-        //data source kategori
-        dataSource.add("Hello");
-        dataSource.add("World");
-        dataSource.add("To");
-        dataSource.add("The");
-        dataSource.add("Code");
-        dataSource.add("City");
-        dataSource.add("******");
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
@@ -110,9 +94,6 @@ public class BerandaFragment extends Fragment {
                     if (kategoriResponse != null) {
                         List<KategoriModel> kategoriModelList = kategoriResponse.getData();
                         Log.d("API Response", "Data berhasil diambil: " + kategoriModelList.toString());
-                        String imageUrl = "http://192.168.100.13:8000/assets/images/photojenisproduk/fruit.png"; // Ganti dengan URL gambar yang ingin Anda cek
-
-                        Log.d("URL FOTO Debug", "Image URL: " + imageUrl);
                         generateDataList(kategoriModelList);
                     }
                 } else {
@@ -162,10 +143,9 @@ public class BerandaFragment extends Fragment {
     }
 
     private void loadBannerImages() {
-
         // Memanggil API untuk mendapatkan data banner
         ApiService service = ApiClient.getClient().create(ApiService.class);
-        Call<BannerResponse> call = service.getBanner();
+        Call<BannerResponse> call = service.getAllBanner();
         call.enqueue(new Callback<BannerResponse>() {
             @Override
             public void onResponse(Call<BannerResponse> call, Response<BannerResponse> response) {
@@ -181,6 +161,7 @@ public class BerandaFragment extends Fragment {
                     }
                     // Mengatur slideModels ke imageSlider
                     imageSlider.setImageList(slideModels, ScaleTypes.FIT);
+
                 } else {
                     // Menangani kesalahan jika ada
                     Log.e("API Response", "Error: " + response.code() + " - " + response.message());

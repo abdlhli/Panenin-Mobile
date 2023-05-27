@@ -1,15 +1,26 @@
 package com.example.paneninmobile.Home;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.paneninmobile.Api.ApiClient;
+import com.example.paneninmobile.Api.ApiService;
+import com.example.paneninmobile.Models.ProdukModel;
+import com.example.paneninmobile.Models.ProdukResponse;
 import com.example.paneninmobile.R;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ProdukList extends AppCompatActivity {
 
@@ -17,47 +28,57 @@ public class ProdukList extends AppCompatActivity {
 
     private ProdukListAdapter produkListAdapter;
 
-    private ArrayList<ProdukListGet> dataSourceProdukList = new ArrayList<>();
-    ArrayList<ProdukListGet> dataProdukList = new ArrayList<>();
-
-
+    private ArrayList<ProdukModel> dataSourceProdukList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.produklist);
         recyclerViewProdukList = findViewById(R.id.horizontalRv3);
 
-        dataProdukList.add(new ProdukListGet("Judul 1", "Harga 1"));
-        dataProdukList.add(new ProdukListGet("Judul 2", "Harga 2"));
-        dataProdukList.add(new ProdukListGet("Judul 3", "Harga 3"));
-        dataProdukList.add(new ProdukListGet("Judul 4", "Harga 4"));
-        dataProdukList.add(new ProdukListGet("Judul 5", "Harga 5"));
-        dataProdukList.add(new ProdukListGet("Judul 6", "Harga 6"));
-        dataProdukList.add(new ProdukListGet("Judul 7", "Harga 7"));
-        dataProdukList.add(new ProdukListGet("Judul 8", "Harga 8"));
-        dataProdukList.add(new ProdukListGet("Judul 9", "Harga 9"));
+        //Kategori
+        // Create handle for the RetrofitInstance interface
+        ApiService service = ApiClient.getClient().create(ApiService.class);
+        Call<ProdukResponse> call = service.getAllProduk();
+        call.enqueue(new Callback<ProdukResponse>() {
+            @Override
+            public void onResponse(Call<ProdukResponse> call, Response<ProdukResponse> response) {
 
-        dataSourceProdukList.addAll(dataProdukList);
+                if (response.isSuccessful()) {
+                    ProdukResponse produkResponse = response.body();
+                    if (produkResponse != null) {
+                        List<ProdukModel> produkModelList = produkResponse.getData();
+                        Log.d("API Response", "Data berhasil diambil: " + produkModelList.toString());
+                        String imageUrl = "http://192.168.100.13:8000/assets/images/photojenisproduk/fruit.png"; // Ganti dengan URL gambar yang ingin Anda cek
 
+                        Log.d("URL FOTO Debug", "Image URL: " + imageUrl);
+                        generateDataList(produkModelList);
+                    }
+                } else {
+                    String errorMessage = "Error: " + response.code() + " - " + response.message();
+                    Log.e("API Response", errorMessage);
+                }
+            }
 
+            @Override
+            public void onFailure(Call<ProdukResponse> call, Throwable t) {
+                Log.e("ErrorAPI", "onFailure: " + t.getMessage());
+            }
+        });
+    }
 
-        ProdukListAdapter produkListAdapter = new ProdukListAdapter(dataSourceProdukList);
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 2);
+    private void generateDataList(List<ProdukModel> produkModelList) {
+        dataSourceProdukList.addAll(produkModelList);
+        produkListAdapter = new ProdukListAdapter(dataSourceProdukList);
+        LinearLayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 2);
         recyclerViewProdukList.setLayoutManager(layoutManager);
         recyclerViewProdukList.setAdapter(produkListAdapter);
 
         produkListAdapter.setDialog(new ProdukListAdapter.Dialog() {
             @Override
-            public void onClick(ProdukListGet produkListGet) {
-                Toast.makeText(getApplicationContext(), "Kamu klik menu : " +produkListGet.getTitle(), Toast.LENGTH_SHORT).show();
+            public void onClick(ProdukModel produkModel) {
+                Toast.makeText(getApplicationContext(), "Kamu menambahkan: " + produkModel.getNamaProduk() + " Ke Keranjang", Toast.LENGTH_SHORT).show();
             }
         });
-
-
-
-
-
     }
 }
