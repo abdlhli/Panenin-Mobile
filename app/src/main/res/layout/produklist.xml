@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/hijau_bg"
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -13,13 +14,15 @@
 
         <SearchView
             android:id="@+id/searchView1"
-            android:layout_width="363dp"
+            android:layout_width="match_parent"
             android:layout_height="43dp"
-            android:layout_marginStart="17dp"
-            android:layout_marginEnd="17dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="25dp"
+            app:circularflow_radiusInDP="12dp"
+            android:queryHint="Golek opo cak..."
             app:layout_constraintEnd_toEndOf="parent"
-
+            android:background="@drawable/search_view_bg"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -37,16 +40,14 @@
             app:layout_constraintTop_toBottomOf="@+id/searchView1">
 
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/horizontalRv3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginEnd="30dp"
-                    android:scrollbars="horizontal"
-                    tools:listitem="@layout/produklistcard">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/horizontalRv3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="horizontal"
+                tools:listitem="@layout/produklistcard">
 
-                </androidx.recyclerview.widget.RecyclerView>
+            </androidx.recyclerview.widget.RecyclerView>
 
         </LinearLayout>
 

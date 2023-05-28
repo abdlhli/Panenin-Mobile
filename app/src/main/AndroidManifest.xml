@@ -27,7 +27,7 @@
 <!--            android:name=".Home.MainActivity"-->
 <!--            android:exported="false" />-->
         <activity
-            android:name=".Home.ProdukList"
+            android:name=".Keranjang.Keranjang"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

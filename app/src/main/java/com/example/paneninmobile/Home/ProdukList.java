@@ -1,6 +1,7 @@
 package com.example.paneninmobile.Home;
 
 import android.os.Bundle;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,6 +28,7 @@ public class ProdukList extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.produklist);
+
         recyclerViewProdukList = findViewById(R.id.horizontalRv3);
 
         dataProdukList.add(new ProdukListGet("Judul 1", "Harga 1"));
@@ -47,6 +49,7 @@ public class ProdukList extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 2);
         recyclerViewProdukList.setLayoutManager(layoutManager);
         recyclerViewProdukList.setAdapter(produkListAdapter);
+//
 
         produkListAdapter.setDialog(new ProdukListAdapter.Dialog() {
             @Override
