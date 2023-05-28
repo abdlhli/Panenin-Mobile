@@ -10,8 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.example.paneninmobile.Home.BerandaFragment;
+import com.example.paneninmobile.Keranjang.KeranjangFragment;
 import com.example.paneninmobile.Profile.ProfileFragment;
-import com.example.paneninmobile.fragments.SelesaiFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.UnsupportedEncodingException;
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
                         selectedFragment = new BerandaFragment();
                         break;
                     case R.id.KeranjangButton:
-                        selectedFragment = new SelesaiFragment();
+                        selectedFragment = new KeranjangFragment();
                         break;
                     case R.id.WhatsappButton:
                         openWhatsapp();
