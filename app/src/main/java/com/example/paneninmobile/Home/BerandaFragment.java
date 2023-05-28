@@ -23,6 +23,8 @@ import com.example.paneninmobile.Models.BannerModel;
 import com.example.paneninmobile.Models.BannerResponse;
 import com.example.paneninmobile.Models.KategoriModel;
 import com.example.paneninmobile.Models.KategoriResponse;
+import com.example.paneninmobile.Models.TerlarisModel;
+import com.example.paneninmobile.Models.TerlarisResponse;
 import com.example.paneninmobile.R;
 
 import java.util.ArrayList;
@@ -81,7 +83,6 @@ public class BerandaFragment extends Fragment {
         progressDoalog.setMessage("Loading....");
         progressDoalog.show();
 
-        // Create handle for the RetrofitInstance interface
         ApiService service = ApiClient.getClient().create(ApiService.class);
         Call<KategoriResponse> call = service.getAllKategori();
         call.enqueue(new Callback<KategoriResponse>() {
@@ -94,7 +95,7 @@ public class BerandaFragment extends Fragment {
                     if (kategoriResponse != null) {
                         List<KategoriModel> kategoriModelList = kategoriResponse.getData();
                         Log.d("API Response", "Data berhasil diambil: " + kategoriModelList.toString());
-                        generateDataList(kategoriModelList);
+                        generateKategoriList(kategoriModelList);
                     }
                 } else {
                     String errorMessage = "Error: " + response.code() + " - " + response.message();
@@ -110,7 +111,34 @@ public class BerandaFragment extends Fragment {
             }
         });
 
+        // Terlaris
+        ApiService serviceTerlaris = ApiClient.getClient().create(ApiService.class);
+        Call<TerlarisResponse> callTerlaris = serviceTerlaris.getProdukTerlaris();
+        callTerlaris.enqueue(new Callback<TerlarisResponse>() {
+            @Override
+            public void onResponse(Call<TerlarisResponse> callTerlaris, Response<TerlarisResponse> responseTerlaris) {
+                progressDoalog.dismiss();
 
+                if (responseTerlaris.isSuccessful()) {
+                    TerlarisResponse terlarisResponse = responseTerlaris.body();
+                    if (terlarisResponse != null) {
+                        List<TerlarisModel> terlarisModelList = terlarisResponse.getData();
+                        Log.d("API Response", "Data berhasil diambil: " + terlarisResponse.toString());
+                        generateTerlarisList(terlarisModelList);
+                    }
+                } else {
+                    String errorMessage = "Error: " + responseTerlaris.code() + " - " + responseTerlaris.message();
+                    Log.e("API Response", errorMessage);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TerlarisResponse> call, Throwable t) {
+                progressDoalog.dismiss();
+                Log.e("ErrorAPI", "onFailure: " + t.getMessage());
+                Toast.makeText(getActivity(), "Something went wrong...Please try later!", Toast.LENGTH_LONG).show();
+            }
+        });
 
         // Tombol Mengarah ke produk list
         textView.setOnClickListener(new View.OnClickListener() {
@@ -122,21 +150,23 @@ public class BerandaFragment extends Fragment {
         });
 
         //Terlaris Adapter
-        TerlarisAdapter terlarisAdapter = new TerlarisAdapter(dataSourceTerlaris);
-        LinearLayoutManager linearLayoutManagerTerlaris = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-        recyclerViewTerlaris.setAdapter(terlarisAdapter);
-        recyclerViewTerlaris.setLayoutManager(linearLayoutManagerTerlaris);
 
-        LinearLayoutManager layoutManagerTerlaris = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-        recyclerViewTerlaris.setLayoutManager(layoutManagerTerlaris);
 
         return view;
     }
 
-    // Method to generate List of data using RecyclerView with custom adapter
-    private void generateDataList(List<KategoriModel> kategoriResponseList) {
+
+    private void generateKategoriList(List<KategoriModel> kategoriModelList) {
         recyclerView = getView().findViewById(R.id.horizontalRv);
-        KategoriAdapter adapter = new KategoriAdapter(getActivity(), kategoriResponseList);
+        KategoriAdapter adapter = new KategoriAdapter(getActivity(), kategoriModelList);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
+    }
+
+    private void generateTerlarisList(List<TerlarisModel> terlarisModelList) {
+        recyclerView = getView().findViewById(R.id.horizontalRv2);
+        TerlarisAdapter adapter = new TerlarisAdapter(getActivity(), terlarisModelList);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);

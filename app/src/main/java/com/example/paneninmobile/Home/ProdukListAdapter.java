@@ -54,6 +54,15 @@ public class ProdukListAdapter extends RecyclerView.Adapter<ProdukListAdapter.My
 
         Log.d("URL DEBUG FOTO PICASSO", "Image Url:" + imageUrl);
         Picasso.get().load(imageUrl).into(holder.gambar);
+
+        // Cek jika stock_produk < 2, maka nonaktifkan klik dan ubah menjadi abu-abu
+        if (Integer.parseInt(produk.getStockProduk()) < 2) {
+            holder.itemView.setEnabled(false);
+            holder.itemView.setAlpha(0.5f);
+        } else {
+            holder.itemView.setEnabled(true);
+            holder.itemView.setAlpha(1.0f);
+        }
     }
 
     @Override

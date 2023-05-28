@@ -49,9 +49,6 @@ public class ProdukList extends AppCompatActivity {
                     if (produkResponse != null) {
                         List<ProdukModel> produkModelList = produkResponse.getData();
                         Log.d("API Response", "Data berhasil diambil: " + produkModelList.toString());
-                        String imageUrl = "http://192.168.100.13:8000/assets/images/photojenisproduk/fruit.png"; // Ganti dengan URL gambar yang ingin Anda cek
-
-                        Log.d("URL FOTO Debug", "Image URL: " + imageUrl);
                         generateDataList(produkModelList);
                     }
                 } else {
