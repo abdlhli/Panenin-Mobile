@@ -1,5 +1,29 @@
 package com.example.paneninmobile.Auth;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.paneninmobile.Api.ApiClient;
+import com.example.paneninmobile.Api.LoginRequest;
+import com.example.paneninmobile.Api.LoginResponse;
+import com.example.paneninmobile.Home.MainActivity;
+import com.example.paneninmobile.R;
+import com.google.android.material.textfield.TextInputEditText;
+
+import org.w3c.dom.Text;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,10 +40,16 @@ public class LoginActivity extends AppCompatActivity {
     TextView btn_toregist;
     TextView btn_login;
 
+    EditText email, password;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        email = findViewById(R.id.inputusername);
+        password = findViewById(R.id.inputpass);
 
         btn_back = findViewById(R.id.back);
         btn_back.setOnClickListener(new View.OnClickListener() {
@@ -37,16 +67,57 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        btn_login = findViewById(R.id.btn_login2);
+
+        btn_login = findViewById(R.id.btn_login);
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
+                String _email = email.getText().toString().trim();
+                String _password = password.getText().toString().trim();
+                if (!_email.equals("") && !_password.equals("")){
+                    login();
+                } else {
+                    email.setError("email tidak boleh kosong");
+                    password.setError("password tidak boleh kosong");
+
+                }
             }
         });
 
+    }
+    public void login() {
+        LoginRequest loginRequest = new LoginRequest();
+        loginRequest.setEmail(email.getText().toString());
+        loginRequest.setPassword(password.getText().toString());
 
+        Call<LoginResponse> loginResponseCall = ApiClient.getUserService().userLogin(loginRequest);
+        loginResponseCall.enqueue(new Callback<LoginResponse>() {
+            @Override
+            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+
+                Log.d("API Response","Data Berhasil Diambil:");
+                String errorMessage = "Error:" + response.code() + "-" + response.message();
+                Log.e("API Response", errorMessage);
+                if (response.isSuccessful()) {
+                    Toast.makeText(LoginActivity.this, "Berhasil Login", Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+
+                } else {
+                    Toast.makeText(LoginActivity.this, "Gagal Login", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<LoginResponse> call, Throwable t) {
+                Toast.makeText(LoginActivity.this, "Throwable" +t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+
+                Log.d("API Response","Data Berhasil Diambil:");
+                Log.e("ErrorAPI", "onFailure:" +t.getMessage());
+            }
+
+        });
     }
 }
+
+

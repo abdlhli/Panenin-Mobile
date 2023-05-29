@@ -28,29 +28,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
+
     <TextView
         android:id="@+id/login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/inriansans_regular"
         android:text="LOGIN"
         android:textColor="@color/white"
-        android:fontFamily="@font/inriansans_regular"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView4"
-        app:layout_constraintVertical_bias="0.358" />
+        app:layout_constraintTop_toTopOf="@+id/imageView4" />
+
 
     <ImageView
         android:id="@+id/back"
         android:layout_width="62dp"
         android:layout_height="40dp"
-        android:layout_marginTop="52dp"
+
+        android:layout_marginTop="36dp"
         app:layout_constraintEnd_toStartOf="@+id/login"
-        app:layout_constraintHorizontal_bias="0.158"
+        app:layout_constraintHorizontal_bias="0.18"
+
         app:layout_constraintStart_toStartOf="@+id/imageView4"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_back" />
@@ -59,16 +62,19 @@
         android:id="@+id/welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/inriansans_regular"
+
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/inriansans_regular"
         android:text="Welcome Back!"
 
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.466"
+
+        app:layout_constraintHorizontal_bias="0.467"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login" />
 
@@ -83,10 +89,12 @@
         android:padding="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+
+        app:layout_constraintHorizontal_bias="0.517"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
-        app:layout_constraintVertical_bias="0.069" />
+        app:layout_constraintTop_toTopOf="@+id/viewlogin"
+        app:layout_constraintVertical_bias="0.072" />
+
 
     <EditText
         android:id="@+id/inputpass"
@@ -119,7 +127,7 @@
         app:layout_constraintTop_toBottomOf="@+id/inputpass" />
 
     <Button
-        android:id="@+id/btn_login2"
+        android:id="@+id/btn_login"
         android:layout_width="327dp"
         android:layout_height="51dp"
         android:layout_centerHorizontal="true"
@@ -146,7 +154,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.261"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_login2" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+
 
     <TextView
         android:id="@+id/toregist"
@@ -160,7 +169,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.861"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_login2" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
