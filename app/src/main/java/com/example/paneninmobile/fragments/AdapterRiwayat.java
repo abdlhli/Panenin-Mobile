@@ -6,19 +6,30 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.paneninmobile.Keranjang.KeranjangModel;
+import com.example.paneninmobile.Models.DetailPemesananModel;
+import com.example.paneninmobile.Models.DetailPemesananResponse;
+import com.example.paneninmobile.Models.KategoriModel;
+import com.example.paneninmobile.Models.PemesananModel;
+import com.example.paneninmobile.Models.StatusPemesananModel;
 import com.example.paneninmobile.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AdapterRiwayat extends RecyclerView.Adapter<AdapterRiwayat.ViewHolder> {
 
-    private ArrayList<RiwayatModel> riwayatModel;
+    private List<PemesananModel> datapemesanan;
+    FragmentActivity activity;
 
-    public AdapterRiwayat(ArrayList<RiwayatModel> riwayatModel) {
-        this.riwayatModel = riwayatModel;
+
+    public AdapterRiwayat(FragmentActivity activity, List<PemesananModel> datapemesanan) {
+        this.activity = activity;
+        this.datapemesanan = datapemesanan;
+
     }
 
     @NonNull
@@ -31,16 +42,17 @@ public class AdapterRiwayat extends RecyclerView.Adapter<AdapterRiwayat.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.barangriwayat.setText(riwayatModel.get(position).getbarang());
-        holder.idriwayat.setText(riwayatModel.get(position).getid());
-        holder.jumlahriwayat.setText(riwayatModel.get(position).getJumlah());
-        holder.totalriwayat.setText(riwayatModel.get(position).getTotal());
+        PemesananModel pemesananmodel = datapemesanan.get(position);
+        holder.idriwayat.setText(pemesananmodel.getId_pemesanan());
+        holder.barangriwayat.setText(pemesananmodel.getTgl_pemesanan());
+        holder.jumlahriwayat.setText(pemesananmodel.getId_status_pemesanan());
+        holder.totalriwayat.setText(pemesananmodel.getTotal_harga_pemesanan());
 
     }
 
     @Override
     public int getItemCount() {
-        return riwayatModel.size();
+        return datapemesanan.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
