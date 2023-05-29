@@ -14,7 +14,7 @@ import com.example.paneninmobile.R;
 import com.google.android.material.tabs.TabLayout;
 
 
-public class DetailRiwayatActivity extends AppCompatActivity {
+public class   DetailRiwayatActivity extends AppCompatActivity {
     Button btn_bck_profile;
     TabLayout tabLayout;
     ViewPager2 viewPager2;
