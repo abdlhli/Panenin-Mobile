@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -23,22 +24,32 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.example.paneninmobile.R;
+
+
 public class RegisterActivity extends AppCompatActivity {
     ImageView btn_back;
     TextView btn_tologin;
     Button btn_register;
     EditText firstname, lastname, alamat, email, no_telp, password;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
         firstname = findViewById(R.id.nama);
         lastname = findViewById(R.id.nama2);
         email = findViewById(R.id.email);
         alamat = findViewById(R.id.alamat);
         no_telp = findViewById(R.id.nohp);
         password = findViewById(R.id.password);
+
 
         btn_back = findViewById(R.id.back);
         btn_back.setOnClickListener(new View.OnClickListener() {
@@ -55,6 +66,7 @@ public class RegisterActivity extends AppCompatActivity {
                 startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
             }
         });
+
 
         btn_register = findViewById(R.id.btn_register);
         btn_register.setOnClickListener(new View.OnClickListener() {

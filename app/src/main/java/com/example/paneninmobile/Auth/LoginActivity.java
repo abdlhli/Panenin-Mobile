@@ -24,19 +24,33 @@ import org.w3c.dom.Text;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.paneninmobile.MainActivity;
+import com.example.paneninmobile.R;
 
 public class LoginActivity extends AppCompatActivity {
     ImageView btn_back;
     TextView btn_toregist;
     TextView btn_login;
+
     EditText email, password;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         email = findViewById(R.id.inputusername);
         password = findViewById(R.id.inputpass);
+
         btn_back = findViewById(R.id.back);
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +66,7 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
             }
         });
+
 
         btn_login = findViewById(R.id.btn_login);
         btn_login.setOnClickListener(new View.OnClickListener() {
@@ -104,3 +119,5 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 }
+
+

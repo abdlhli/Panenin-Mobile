@@ -9,27 +9,25 @@
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="417dp"
-        android:layout_height="378dp"
+        android:layout_width="match_parent"
+        android:layout_height="191dp"
         android:scaleType="fitStart"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/daun" />
 
     <ImageView
         android:id="@+id/viewlogin"
         android:layout_width="match_parent"
-        android:layout_height="618dp"
+        android:layout_height="640dp"
         android:background="@drawable/bg_white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcome"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
 
     <TextView
         android:id="@+id/login"
@@ -46,13 +44,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView4" />
 
+
     <ImageView
         android:id="@+id/back"
         android:layout_width="62dp"
         android:layout_height="40dp"
+
         android:layout_marginTop="36dp"
         app:layout_constraintEnd_toStartOf="@+id/login"
         app:layout_constraintHorizontal_bias="0.18"
+
         app:layout_constraintStart_toStartOf="@+id/imageView4"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_back" />
@@ -61,15 +62,19 @@
         android:id="@+id/welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
         android:fontFamily="@font/inriansans_regular"
         android:text="Welcome Back!"
+
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+
         app:layout_constraintHorizontal_bias="0.467"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login" />
 
@@ -84,10 +89,12 @@
         android:padding="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+
         app:layout_constraintHorizontal_bias="0.517"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/viewlogin"
         app:layout_constraintVertical_bias="0.072" />
+
 
     <EditText
         android:id="@+id/inputpass"
@@ -149,6 +156,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
+
     <TextView
         android:id="@+id/toregist"
         android:layout_width="100dp"
@@ -162,6 +170,7 @@
         app:layout_constraintHorizontal_bias="0.861"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

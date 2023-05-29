@@ -7,6 +7,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.Window;
 
+
+import com.example.paneninmobile.Auth.OnBoarding;
+
+
 public class SplashScreen extends AppCompatActivity {
 
     @Override
