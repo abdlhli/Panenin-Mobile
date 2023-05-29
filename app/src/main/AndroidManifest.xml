@@ -17,7 +17,7 @@
 
 
         <activity
-            android:name=".SplashScreen"
+            android:name=".Keranjang.Keranjang"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,22 +28,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".MainActivity"
-            android:exported="false"/>
-        <activity
-            android:name=".Auth.OnBoarding"
-            android:exported="false" />
-        <activity
-            android:name=".Auth.RegisterActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Auth.LoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Profile.DetailRiwayatActivity"
-            android:exported="false"/>
-        <activity
-            android:name=".Profile.UpdateProfileActivity"
+            android:name=".Keranjang.Transaksi"
             android:exported="false"/>
     </application>
 
