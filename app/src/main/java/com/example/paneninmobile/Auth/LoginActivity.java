@@ -1,10 +1,7 @@
 package com.example.paneninmobile.Auth;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -12,36 +9,25 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.paneninmobile.Api.ApiClient;
 import com.example.paneninmobile.Api.LoginRequest;
 import com.example.paneninmobile.Api.LoginResponse;
-import com.example.paneninmobile.Home.MainActivity;
+import com.example.paneninmobile.MainActivity;
+import com.example.paneninmobile.PrefManager;
 import com.example.paneninmobile.R;
-import com.google.android.material.textfield.TextInputEditText;
-
-import org.w3c.dom.Text;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.paneninmobile.MainActivity;
-import com.example.paneninmobile.R;
 
 public class LoginActivity extends AppCompatActivity {
     ImageView btn_back;
     TextView btn_toregist;
     TextView btn_login;
-
     EditText email, password;
-
+    private PrefManager prefManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +53,13 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        // Inisialisasi PrefManager
+        prefManager = new PrefManager(this);
+
+        if (prefManager.isLoggedIn()) {
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            finish();
+        }
 
         btn_login = findViewById(R.id.btn_login);
         btn_login.setOnClickListener(new View.OnClickListener() {
@@ -83,8 +76,8 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
+
     public void login() {
         LoginRequest loginRequest = new LoginRequest();
         loginRequest.setEmail(email.getText().toString());
@@ -100,6 +93,8 @@ public class LoginActivity extends AppCompatActivity {
                 Log.e("API Response", errorMessage);
                 if (response.isSuccessful()) {
                     Toast.makeText(LoginActivity.this, "Berhasil Login", Toast.LENGTH_LONG).show();
+                    // Set status login ke true setelah login berhasil
+                    prefManager.setLoggedIn(true);
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
 
                 } else {

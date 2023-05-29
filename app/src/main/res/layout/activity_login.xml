@@ -84,7 +84,7 @@
         android:layout_height="67dp"
         android:background="@drawable/input_bg"
         android:ems="10"
-        android:hint="Username"
+        android:hint="Email"
         android:inputType="textPersonName"
         android:padding="15dp"
         app:layout_constraintBottom_toBottomOf="parent"

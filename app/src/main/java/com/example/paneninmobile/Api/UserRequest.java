@@ -1,12 +1,21 @@
 package com.example.paneninmobile.Api;
 
 public class UserRequest {
+    private String id_user;
     private String firstname;
     private String lastname;
     private String email;
     private String password;
     private String alamat;
     private String no_telp;
+
+    public String getId_user() {
+        return id_user;
+    }
+
+    public void setId_user(String id_user) {
+        this.id_user = id_user;
+    }
 
     public String getFirstname() {
         return firstname;

@@ -4,6 +4,7 @@ public class UserResponse {
     private String message;
 
     public String getMessage() {
+
         return message;
     }
 
@@ -12,14 +13,17 @@ public class UserResponse {
     }
 
     public UserDataReponse getData() {
+
         return data;
     }
 
     public void setData(UserDataReponse data) {
+
         this.data = data;
     }
 
     private UserDataReponse data;
+
 
 
     public static class UserDataReponse {
@@ -29,38 +33,47 @@ public class UserResponse {
         private String alamat;
 
         public String getFirstname() {
+
             return firstname;
         }
 
         public void setFirstname(String firstname) {
+
             this.firstname = firstname;
         }
 
         public String getLastname() {
+
             return lastname;
         }
 
         public void setLastname(String lastname) {
+
             this.lastname = lastname;
         }
 
         public String getEmail() {
+
             return email;
         }
 
         public void setEmail(String email) {
+
             this.email = email;
         }
 
         public String getAlamat() {
+
             return alamat;
         }
 
         public void setAlamat(String alamat) {
+
             this.alamat = alamat;
         }
 
         public String getNo_telp() {
+
             return no_telp;
         }
 
@@ -84,17 +97,17 @@ public class UserResponse {
             this.foto_profile = foto_profile;
         }
 
-        public int getId_user() {
+        public String getId_user() {
             return id_user;
         }
 
-        public void setId_user(int id_user) {
+        public void setId_user(String id_user) {
             this.id_user = id_user;
         }
 
         private String no_telp;
         private int id_hak_akses;
         private String foto_profile;
-        private int id_user;
+        private String id_user;
     }
 }

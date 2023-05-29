@@ -1,10 +1,7 @@
 package com.example.paneninmobile.Auth;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -13,22 +10,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.paneninmobile.Api.ApiClient;
 import com.example.paneninmobile.Api.UserRequest;
 import com.example.paneninmobile.Api.UserResponse;
-import com.example.paneninmobile.Home.MainActivity;
+import com.example.paneninmobile.MainActivity;
 import com.example.paneninmobile.R;
-import com.google.android.material.textfield.TextInputEditText;
+
+import java.io.IOException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import com.example.paneninmobile.R;
 
 
 public class RegisterActivity extends AppCompatActivity {
@@ -95,20 +89,28 @@ public class RegisterActivity extends AppCompatActivity {
         userResponseCall.enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
-
                 if (response.isSuccessful()) {
-                    Toast.makeText(RegisterActivity.this, "Register Berhasil", Toast.LENGTH_LONG).show();
+                    // Tanggapan berhasil diterima
+                    UserResponse userResponse = response.body();
+                    String responseData = userResponse != null ? userResponse.getMessage() : "";
+                    Toast.makeText(RegisterActivity.this, responseData, Toast.LENGTH_LONG).show();
                     startActivity(new Intent(RegisterActivity.this, MainActivity.class));
-
                 } else {
-                    Toast.makeText(RegisterActivity.this, "Register Gagal", Toast.LENGTH_SHORT).show();
+                    // Tanggapan gagal diterima
+                    try {
+                        String errorBody = response.errorBody().string();
+                        Toast.makeText(RegisterActivity.this, errorBody, Toast.LENGTH_SHORT).show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        Toast.makeText(RegisterActivity.this, "IOException", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
 
             @Override
             public void onFailure(Call<UserResponse> call, Throwable t) {
-                Toast.makeText(RegisterActivity.this, "Throwable" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                Log.e("ErrorAPI", "onFailure:" + t.getMessage());
+                Toast.makeText(RegisterActivity.this, "Throwable: " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Log.e("ErrorAPI", "onFailure:" + t.getMessage() + t.getLocalizedMessage());
             }
         });
     }
