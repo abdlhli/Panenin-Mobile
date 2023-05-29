@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.example.paneninmobile.Auth.LoginActivity;
 import com.example.paneninmobile.Home.BerandaFragment;
 import com.example.paneninmobile.Keranjang.KeranjangFragment;
 import com.example.paneninmobile.Profile.ProfileFragment;
@@ -18,13 +19,22 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 public class MainActivity extends AppCompatActivity {
-
+    private PrefManager prefManager;
     private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bottombar);
+
+        // Inisialisasi PrefManager
+        prefManager = new PrefManager(this);
+
+        // Periksa status login
+        if (!prefManager.isLoggedIn()) {
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            finish();
+        }
 
         bottomNavigationView = findViewById(R.id.nav);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -45,6 +55,11 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.ProfileButton:
                         selectedFragment = new ProfileFragment();
                         break;
+                    case R.id.LogoutButton:
+                        prefManager.setLoggedIn(false);
+                        startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                        finish();
+                        return true;
                 }
 
                 getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, selectedFragment).commit();
