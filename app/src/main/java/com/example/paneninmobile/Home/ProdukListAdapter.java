@@ -1,5 +1,6 @@
 package com.example.paneninmobile.Home;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,12 +10,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.paneninmobile.Api.ApiClient;
+import com.example.paneninmobile.Models.ProdukModel;
 import com.example.paneninmobile.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class ProdukListAdapter extends RecyclerView.Adapter<ProdukListAdapter.MyHolder> {
-    ArrayList<ProdukListGet> dataproduk;
+    ArrayList<ProdukModel> dataproduk;
 
     private Dialog dialog;
 
@@ -23,10 +27,10 @@ public class ProdukListAdapter extends RecyclerView.Adapter<ProdukListAdapter.My
     }
 
     public interface Dialog{
-        void onClick(ProdukListGet produkListGet);
+        void onClick(ProdukModel ProdukModel);
     }
 
-    public ProdukListAdapter(ArrayList<ProdukListGet> dataproduk) {
+    public ProdukListAdapter(ArrayList<ProdukModel> dataproduk) {
 
         this.dataproduk = dataproduk;
 
@@ -41,9 +45,24 @@ public class ProdukListAdapter extends RecyclerView.Adapter<ProdukListAdapter.My
 
     @Override
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
-        holder.tvTitle3.setText(dataproduk.get(position).getTitle());
-        holder.textproduklist.setText(dataproduk.get(position).getHarga());
-//        holder.gambar.setImageDrawable(dataproduk.get(position).getGambar());
+        ProdukModel produk = dataproduk.get(position);
+        holder.tvTitle3.setText(produk.getNamaProduk());
+        holder.textproduklist.setText(produk.getHargaProduk());
+
+        String imageName = produk.getFotoProduk();
+        String imageUrl = ApiClient.LINK_API + "assets/images/photoproduk/" + imageName;
+
+        Log.d("URL DEBUG FOTO PICASSO", "Image Url:" + imageUrl);
+        Picasso.get().load(imageUrl).into(holder.gambar);
+
+        // Cek jika stock_produk < 2, maka nonaktifkan klik dan ubah menjadi abu-abu
+        if (Integer.parseInt(produk.getStockProduk()) < 2) {
+            holder.itemView.setEnabled(false);
+            holder.itemView.setAlpha(0.5f);
+        } else {
+            holder.itemView.setEnabled(true);
+            holder.itemView.setAlpha(1.0f);
+        }
     }
 
     @Override
@@ -54,13 +73,13 @@ public class ProdukListAdapter extends RecyclerView.Adapter<ProdukListAdapter.My
 
     class MyHolder extends RecyclerView.ViewHolder {
         TextView tvTitle3, textproduklist;
-//        ImageView gambar;
+        ImageView gambar;
 
         public MyHolder(@NonNull View itemView) {
             super(itemView);
             tvTitle3 = itemView.findViewById(R.id.tvTitle3);
             textproduklist = itemView.findViewById(R.id.textproduklist);
-//            gambar = itemView.findViewById(R.id.Produklist);
+            gambar = itemView.findViewById(R.id.Produklist);
 
             itemView.setOnClickListener(v -> {
                 if (dialog!=null){
