@@ -4,7 +4,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-tools:context=".Keranjang.KeranjangFragment">
+tools:context=".Keranjang.Keranjang">
 
     <TextView
         android:id="@+id/textView6"
@@ -112,6 +112,7 @@ tools:context=".Keranjang.KeranjangFragment">
     </LinearLayout>
 
     <Button
+        android:id="@+id/button_beli"
         android:layout_width="341dp"
         android:layout_height="52dp"
         android:layout_marginTop="20dp"
